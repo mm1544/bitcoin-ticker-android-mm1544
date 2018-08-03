@@ -45,7 +45,22 @@ public class MainActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         // TODO: Set an OnItemSelected listener on the spinner
+        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
+            //The spinner reports back on two events: 1) if nothing was selected or 2) if an item
+            // was selected.
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                //we can retrieve the selected item with parent.getItemAtPosition(position)
+                Log.d("Bitcoin", "" + parent.getItemAtPosition(position));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Log.d("Bitcoin", "Nothing selected");
+            }
+        });
     }
 
     // TODO: complete the letsDoSomeNetworking() method
